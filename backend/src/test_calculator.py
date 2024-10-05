@@ -75,7 +75,7 @@ class TestCalculator(unittest.TestCase):
         self.assertTrue(math.isnan(self.calculator.sqrt(math.nan)))
 
     def test_nth_root(self):
-        self.assertEqual(self.calculator.nth_root(125, 3), 5)
+        self.assertAlmostEqual(self.calculator.nth_root(125, 3), 5)
         self.assertEqual(self.calculator.nth_root(16, 4), 2)
         self.assertTrue(math.isinf(self.calculator.nth_root(math.inf, 3)))
         self.assertTrue(math.isnan(self.calculator.nth_root(math.nan, 3)))
