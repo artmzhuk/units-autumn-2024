@@ -23,6 +23,21 @@ class TestCalculator(unittest.TestCase):
     def test_add5(self):
         self.assertTrue(math.isnan(self.calculator.addition(math.nan, 1)))
 
+    def test_add6(self):
+        self.assertEqual(self.calculator.addition(0.3, 0.25), 0.55)
+
+    def test_add7(self):
+        self.assertEqual(self.calculator.addition(1.0, 2.0), 3.0)
+
+    def test_add8(self):
+        self.assertEqual(self.calculator.addition(0.0, 0.0), 0.0)
+
+    def test_add9(self):
+        self.assertTrue(math.isinf(self.calculator.addition(math.inf, 1.1)))
+
+    def test_add10(self):
+        self.assertTrue(math.isnan(self.calculator.addition(math.nan, 1.1)))
+
     def test_subtract1(self):
         self.assertEqual(self.calculator.subtraction(10, 5), 5)
 
@@ -38,6 +53,15 @@ class TestCalculator(unittest.TestCase):
     def test_subtract5(self):
         self.assertTrue(math.isnan(self.calculator.subtraction(math.nan, 1)))
 
+    def test_subtract6(self):
+        self.assertEqual(self.calculator.subtraction(-5.2, -5.2), 0)
+
+    def test_subtract7(self):
+        self.assertTrue(math.isinf(self.calculator.subtraction(math.inf, 1.1)))
+
+    def test_subtract8(self):
+        self.assertTrue(math.isnan(self.calculator.subtraction(math.nan, 1.1)))
+
     def test_multiply1(self):
         self.assertEqual(self.calculator.multiplication(3, 4), 12)
 
@@ -52,6 +76,18 @@ class TestCalculator(unittest.TestCase):
 
     def test_multiply5(self):
         self.assertTrue(math.isnan(self.calculator.multiplication(math.nan, 1)))
+
+    def test_multiply6(self):
+        self.assertAlmostEqual(self.calculator.multiplication(-3.1, 4.2), -13.02)
+
+    def test_multiply7(self):
+        self.assertEqual(self.calculator.multiplication(0.0, 100.0), 0.0)
+
+    def test_multiply8(self):
+        self.assertTrue(math.isinf(self.calculator.multiplication(math.inf, 1.5555)))
+
+    def test_multiply9(self):
+        self.assertTrue(math.isnan(self.calculator.multiplication(math.nan, 1.666)))
 
     def test_divide(self):
         self.assertEqual(self.calculator.division(10, 2), 5)
@@ -71,6 +107,12 @@ class TestCalculator(unittest.TestCase):
     def test_divide5(self):
         self.assertTrue(math.isnan(self.calculator.division(1, math.nan)))
 
+    def test_divide6(self):
+        self.assertAlmostEqual(self.calculator.division(1, 3), 0.333333333333)
+
+    def test_divide7(self):
+        self.assertEqual(self.calculator.division(10.5, 0.5), 21)
+
     def test_absolute1(self):
         self.assertEqual(self.calculator.absolute(-10), 10)
 
@@ -86,6 +128,12 @@ class TestCalculator(unittest.TestCase):
     def test_absolute5(self):
         self.assertTrue(math.isnan(self.calculator.absolute(math.nan)))
 
+    def test_absolute6(self):
+        self.assertEqual(self.calculator.absolute(3.28), 3.28)
+
+    def test_absolute7(self):
+        self.assertEqual(self.calculator.absolute(-7.78), 7.78)
+
     def test_degree1(self):
         self.assertEqual(self.calculator.degree(2, 3), 8)
 
@@ -100,6 +148,12 @@ class TestCalculator(unittest.TestCase):
 
     def test_degree5(self):
         self.assertTrue(math.isnan(self.calculator.degree(math.nan, 2)))
+
+    def test_degree6(self):
+        self.assertEqual(self.calculator.degree(2.0, 2.0), 4.0)
+
+    def test_degree67(self):
+        self.assertEqual(self.calculator.degree(4.0, 0.5), 2.0)
 
     def test_ln1(self):
         self.assertAlmostEqual(self.calculator.ln(1), 0)
@@ -148,6 +202,9 @@ class TestCalculator(unittest.TestCase):
     def test_sqrt5(self):
         self.assertTrue(math.isnan(self.calculator.sqrt(math.nan)))
 
+    def test_sqrt6(self):
+        self.assertEqual(self.calculator.sqrt(0.36), 0.6)
+
     def test_nth_root1(self):
         self.assertAlmostEqual(self.calculator.nth_root(125, 3), 5)
 
@@ -160,6 +217,8 @@ class TestCalculator(unittest.TestCase):
     def test_nth_root4(self):
         self.assertTrue(math.isnan(self.calculator.nth_root(math.nan, 3)))
 
+    def test_nth_root5(self):
+        self.assertAlmostEqual(self.calculator.nth_root(0.125, 3), 0.5)
 
 if __name__ == "__main__":
     unittest.main()
