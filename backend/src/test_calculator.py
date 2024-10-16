@@ -38,6 +38,19 @@ class TestCalculator(unittest.TestCase):
     def test_add10(self):
         self.assertTrue(math.isnan(self.calculator.addition(math.nan, 1.1)))
 
+    def test_add11(self):
+        self.assertEqual(self.calculator.addition("BMSTU", "1830"), "BMSTU1830")
+
+    def test_add12(self):
+        self.assertEqual(self.calculator.addition("BMSTU", ""), "BMSTU")
+
+    def test_add13(self):
+        self.assertEqual(self.calculator.addition("", "1830"), "1830")
+
+    def test_add14(self):
+        with self.assertRaises( TypeError):
+            self.calculator.addition("BMSTU", 1830)
+
     def test_subtract1(self):
         self.assertEqual(self.calculator.subtraction(10, 5), 5)
 
@@ -61,6 +74,10 @@ class TestCalculator(unittest.TestCase):
 
     def test_subtract8(self):
         self.assertTrue(math.isnan(self.calculator.subtraction(math.nan, 1.1)))
+
+    def test_subtract9(self):
+        with self.assertRaises(TypeError):
+            self.calculator.subtraction("BMSTU", "STU")
 
     def test_multiply1(self):
         self.assertEqual(self.calculator.multiplication(3, 4), 12)
@@ -89,6 +106,16 @@ class TestCalculator(unittest.TestCase):
     def test_multiply9(self):
         self.assertTrue(math.isnan(self.calculator.multiplication(math.nan, 1.666)))
 
+    def test_multiply10(self):
+        self.assertEqual(self.calculator.multiplication("AH", 3), "AHAHAH")
+
+    def test_multiply11(self):
+        self.assertEqual(self.calculator.multiplication(3, "AH"), "AHAHAH")
+
+    def test_multiply12(self):
+        with self.assertRaises(TypeError):
+            self.calculator.multiplication("alpha", "beta")
+
     def test_divide(self):
         self.assertEqual(self.calculator.division(10, 2), 5)
 
@@ -113,6 +140,10 @@ class TestCalculator(unittest.TestCase):
     def test_divide7(self):
         self.assertEqual(self.calculator.division(10.5, 0.5), 21)
 
+    def test_divide8(self):
+        with self.assertRaises(TypeError):
+            self.calculator.division("alpha", "beta")
+
     def test_absolute1(self):
         self.assertEqual(self.calculator.absolute(-10), 10)
 
@@ -134,6 +165,10 @@ class TestCalculator(unittest.TestCase):
     def test_absolute7(self):
         self.assertEqual(self.calculator.absolute(-7.78), 7.78)
 
+    def test_absolute8(self):
+        with self.assertRaises(TypeError):
+            self.calculator.absolute("alpha")
+
     def test_degree1(self):
         self.assertEqual(self.calculator.degree(2, 3), 8)
 
@@ -152,8 +187,12 @@ class TestCalculator(unittest.TestCase):
     def test_degree6(self):
         self.assertEqual(self.calculator.degree(2.0, 2.0), 4.0)
 
-    def test_degree67(self):
+    def test_degree7(self):
         self.assertEqual(self.calculator.degree(4.0, 0.5), 2.0)
+
+    def test_degree8(self):
+        with self.assertRaises(TypeError):
+            self.calculator.degree("alpha", 2)
 
     def test_ln1(self):
         self.assertAlmostEqual(self.calculator.ln(1), 0)
@@ -167,6 +206,10 @@ class TestCalculator(unittest.TestCase):
 
     def test_ln4(self):
         self.assertTrue(math.isinf(self.calculator.ln(math.inf)))
+
+    def test_ln5(self):
+        with self.assertRaises(TypeError):
+            self.calculator.ln("alpha")
 
     def test_ln5(self):
         self.assertTrue(math.isnan(self.calculator.ln(math.nan)))
@@ -187,6 +230,10 @@ class TestCalculator(unittest.TestCase):
     def test_log5(self):
         self.assertTrue(math.isnan(self.calculator.log(math.nan, 10)))
 
+    def test_log6(self):
+        with self.assertRaises(TypeError):
+            self.calculator.log("alpha", 15)
+
     def test_sqrt1(self):
         self.assertEqual(self.calculator.sqrt(16), 4)
 
@@ -205,6 +252,10 @@ class TestCalculator(unittest.TestCase):
     def test_sqrt6(self):
         self.assertEqual(self.calculator.sqrt(0.36), 0.6)
 
+    def test_sqrt7(self):
+        with self.assertRaises(TypeError):
+            self.calculator.sqrt("alpha")
+
     def test_nth_root1(self):
         self.assertAlmostEqual(self.calculator.nth_root(125, 3), 5)
 
@@ -219,6 +270,11 @@ class TestCalculator(unittest.TestCase):
 
     def test_nth_root5(self):
         self.assertAlmostEqual(self.calculator.nth_root(0.125, 3), 0.5)
+
+    def test_nth_root6(self):
+        with self.assertRaises(TypeError):
+            self.calculator.log("alpha", 5)
+
 
 if __name__ == "__main__":
     unittest.main()
