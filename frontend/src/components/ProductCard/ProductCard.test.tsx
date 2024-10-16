@@ -60,4 +60,18 @@ describe('ProductCard Component', () => {
         expect(screen.queryByAltText('IPhone 14 Pro')).not.toBeInTheDocument();
     });
 
+        it('snapshot render without image', () => {
+        const rendered = render(
+            <ProductCard
+                name="IPhone 14 Pro"
+                description="Latest iPhone model"
+                price={999}
+                priceSymbol="$"
+                category="Электроника"
+                id={2}
+            />
+        );
+
+        expect(rendered.asFragment()).toMatchSnapshot();
+    });
 });
